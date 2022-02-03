@@ -94,7 +94,7 @@ struct TopStoryListView: View {
     private var networkRequestErrorAlert: some View {
         Text("")
             .alert(isPresented: $topStoriesVM.showAlert, content: {
-                Alert(title: Text("There was an issue loading articles."), message: Text("You have likely hit the rate limit or aren't connected to the internet. Wait a few seconds and try again."), primaryButton: .cancel(), secondaryButton:
+                Alert(title: Text("There was an issue loading articles."), message: Text("Wait a few seconds and try again."), primaryButton: .cancel(), secondaryButton:
                             .default(Text("Retry"), action: {
                     Task {
                         do {
