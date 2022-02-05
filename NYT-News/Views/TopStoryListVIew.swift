@@ -48,13 +48,15 @@ struct TopStoryListView: View {
     
     /// This is a ScrollView that holds the article previews.
     private var storyScrollView: some View {
-        ScrollView {
-            ForEach(topStoriesVM.topStories.indices, id: \.self) { story in
-                
-                TopStoryRowView(topStory: topStoriesVM.topStories[story])
-                    .padding(.horizontal)
-                
-                Divider()
+        VStack {
+            ScrollView {
+                ForEach(topStoriesVM.topStories.indices, id: \.self) { story in
+                    
+                    TopStoryRowView(topStory: topStoriesVM.topStories[story])
+                        .padding(.horizontal, 3)
+                    
+                    Divider()
+                }
             }
         }
     }
