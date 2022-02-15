@@ -25,7 +25,7 @@ struct TopStoryListView: View {
             ProgressView()
                 .task {
                     do {
-                        try await topStoriesVM.getTopStories(category: topStoriesVM.service.category)
+                        try await topStoriesVM.getTopStories(category: topStoriesVM.service.category.rawValue)
                         topStoriesVM.isLoading = false
                     } catch let err {
                         print(err)
@@ -35,7 +35,7 @@ struct TopStoryListView: View {
             ZStack {
                 storyScrollView
                     .navigationBarItems(leading: navigationItems, trailing: refreshButton)
-                    .onChange(of: topStoriesVM.service.category) { _ in
+                    .onChange(of: topStoriesVM.service.category.rawValue) { _ in
                         topStoriesVM.isLoading = true
                     }
                 networkRequestErrorAlert
@@ -62,7 +62,7 @@ struct TopStoryListView: View {
     private var navigationItems: some View {
         HStack {
             categoryPicker
-            Text("Top News: \(topStoriesVM.service.category)")
+            Text("Top News: \(topStoriesVM.service.category.rawValue)")
         }
     }
     
@@ -97,7 +97,7 @@ struct TopStoryListView: View {
                             .default(Text("Retry"), action: {
                     Task {
                         do {
-                            try await topStoriesVM.getTopStories(category: topStoriesVM.service.category)
+                            try await topStoriesVM.getTopStories(category: topStoriesVM.service.category.rawValue)
                             topStoriesVM.isLoading = false
                         } catch {
                             print(error)

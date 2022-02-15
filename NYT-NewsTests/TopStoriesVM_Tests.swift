@@ -29,7 +29,7 @@ class TopStoriesVM_Tests: XCTestCase {
     }
 
     @MainActor func test_TopStoriesVM_arraysAreBeingFiltered() throws {
-        let api = APICaller(category: "Arts")
+        let api = APICaller(category: .Arts)
         let vm = TopStoriesVM(service: api)
         let response = try mockAPI.filterForEmptyTitleAndMultimedia()
         var storyArray = [TopStory]()

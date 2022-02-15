@@ -9,10 +9,10 @@ import Foundation
 
 final class APICaller {
     
-    @Published var category: String
+    @Published var category: ArticleCategory
     @Published var statusCode: Int?
     
-    init(category: String) {
+    init(category: ArticleCategory) {
         self.category = category
     }
     
@@ -23,7 +23,7 @@ final class APICaller {
     /// - Returns: Returns the data in a form that's accessible to us.
     func getTopStories(category: String) async throws -> TopStoriesResponse {
         let urlSession = URLSession.shared
-        let url = URL(string: Constants.base+category+".json?api-key=52ZUl4wMOV7BwRGlWdFOJJWSQYq8zHW1") //<<<<<<<< key needed 🔐
+        let url = URL(string: Constants.base+category+".json?api-key=") //<<<<<<<< key needed 🔐
         let (data, response) = try await urlSession.data(from: url!)
         
         if let httpResponse = response as? HTTPURLResponse {
@@ -37,8 +37,6 @@ final class APICaller {
         }
         return storyResponse
     }
-    
-    // 52ZUl4wMOV7BwRGlWdFOJJWSQYq8zHW1
 }
 
 struct Constants {

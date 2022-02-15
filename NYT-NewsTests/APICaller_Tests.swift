@@ -42,7 +42,7 @@ class APICaller_Tests: XCTestCase {
         let category = ""
         var errorMessage = ""
 
-        let api = APICaller(category: category)
+        let api = APICaller(category: ArticleCategory(rawValue: category) ?? .Arts)
         
         do {
             let _ = try await api.getTopStories(category: category)
