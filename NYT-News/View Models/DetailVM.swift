@@ -21,7 +21,6 @@ final class DetailVM: DetailViewModelProtocol {
     // MARK: PROPERTIES
 
     @Published var shouldToggle = false
-
     @Published var story: TopStory
     
     init(story: TopStory) {

@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct HomeView: View {
-    let service = APICaller()
-    let category: ArticleCategory = .Arts
-    
+    let service = APICaller(category: "Arts")
+        
     var body: some View {
         NavigationView {
-            TopStoryListView(dataService: service, category: category)
+            TopStoryListView(dataService: service)
         }
     }
 }

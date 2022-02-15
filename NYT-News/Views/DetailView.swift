@@ -24,11 +24,9 @@ struct DetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
-                
+            VStack(alignment: .leading, spacing: 15) {
                 articleImageAndAuthor
                 articleBody
-
                 .padding(.horizontal)
                 .navigationTitle("")
                 .navigationBarTitleDisplayMode(.inline)
@@ -68,7 +66,7 @@ struct DetailView: View {
     
     /// This is the body of the article (title, abstract, publication date).
     private var articleBody: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: 9) {
             Text(detailVM.story.title)
                 .font(.headline)
             Text(detailVM.story.abstract)

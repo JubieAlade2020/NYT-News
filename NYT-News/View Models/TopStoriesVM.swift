@@ -25,20 +25,19 @@ final class TopStoriesVM: TopStoriesVMProtocol {
     
     // MARK: PROPERTIES
     
-    @Published var selection: ArticleCategory
     @Published var topStories: [TopStory] = []
     @Published var isLoading: Bool = true
     @Published var showAlert: Bool = false
-    @Published var emptyCategory: Bool = false
-    
-    let service: APICaller
+    @Published var service: APICaller
+    @Published var errorMessage: String = ""
+    @Published var errorDescription: String = ""
+
     var storyArray: [TopStory] = []
     var filteredStoryArray: [TopStory] = []
     private var taskHandler: Task<Void, Never>?
     
-    init(service: APICaller, selection: ArticleCategory) {
+    init(service: APICaller) {
         self.service = service
-        self.selection = selection
     }
     
     // MARK: FUNCTIONS
@@ -49,16 +48,20 @@ final class TopStoriesVM: TopStoriesVMProtocol {
         taskHandler?.cancel()
         do {
             emptyArrays()
-
-            let topStories = try await service.getTopStories(section: category)
-            
-            if topStories.results.isEmpty {
-                emptyCategory = true
-            }
-            
-            self.storyArray = topStories.results
+            let response = try await service.getTopStories(category: category)
+            self.storyArray = response.results
             filterAndPopulateArray(topStories: self.storyArray)
         } catch {
+            switch service.statusCode {
+            case 401:
+                errorMessage = "Invalid API Key"
+                errorDescription = "You must provide a valid API key."
+            case 429:
+                errorMessage = "Rate Limit Reached"
+                errorDescription = "You've reached the rate limit. Wait a few seconds and try again."
+            default:
+                errorMessage = "Problem Fetching Data"
+            }
             showAlert.toggle()
         }
     }

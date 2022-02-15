@@ -21,11 +21,8 @@ struct TopStoryRowView: View {
         VStack {
             NavigationLink(destination: DetailView(story: topStory)) {
                 VStack(alignment: .leading, spacing: 15) {
-                    
                     articleImage
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        
+                    VStack(alignment: .leading, spacing: 9) {
                         articleBody
                         articleDetails
                     }
@@ -54,7 +51,7 @@ struct TopStoryRowView: View {
     
     /// This contains the article's title and abstract summary.
     private var articleBody: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 9) {
             Text(topStory.title)
                 .font(.headline)
             Text(topStory.abstract)

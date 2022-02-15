@@ -1,139 +1,63 @@
 //
 //  TopStoriesVM_Tests.swift
-//  NYTAppTests
+//  NYT-NewsTests
 //
-//  Created by Jubie Alade on 1/28/22.
+//  Created by Jubie Alade on 2/15/22.
 //
 
 import XCTest
 @testable import NYT_News
 
 class TopStoriesVM_Tests: XCTestCase {
+
+    let mockAPI = MockAPICaller()
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-    
+
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+
     
-    @MainActor func test_TopStoriesVM_isLoading_shouldBeTrue() {
-        //Given
-        let isLoading: Bool = true
-        let service: APICaller = APICaller()
-        let category: ArticleCategory = .Arts
+    // Test to ensure the json is being decoded
+    func test_TopStoriesVM_decoderIsDecodingData() throws {
+        let response = try mockAPI.fetchFakeStories()
         
-        //When
-        let vm = TopStoriesVM(service: service, selection: category)
-        
-        //Then
-        XCTAssertEqual(vm.isLoading, isLoading)
+        XCTAssertTrue(response.results.isEmpty == false)
     }
-    
-    @MainActor func test_TopStoriesVM_topStories_shouldBeInitializedEmpty() {
-        //Given
-        let service: APICaller = APICaller()
-        let category: ArticleCategory = .Arts
-        
-        //When
-        let vm = TopStoriesVM(service: service, selection: category)
-        
-        //Then
-        XCTAssertEqual(vm.topStories.count, 0)
-    }
-    
-    @MainActor func test_TopStoriesVM_filterAndPopulateArray_successfullyPopulatesTopStoriesArray() async {
-        
-        /*
-         Check that the function actually appends stories to the array
-         */
-        
-        //Given
-        let service: APICaller = APICaller()
-        let category: ArticleCategory = .Arts
-        let vm = TopStoriesVM(service: service, selection: category)
-        
-        //When
-        do {
-            try await vm.getTopStories(category: category.rawValue)
-        } catch {
-            print(error)
+
+    @MainActor func test_TopStoriesVM_arraysAreBeingFiltered() throws {
+        let api = APICaller(category: "Arts")
+        let vm = TopStoriesVM(service: api)
+        let response = try mockAPI.filterForEmptyTitleAndMultimedia()
+        var storyArray = [TopStory]()
+
+        for stories in response.results {
+            storyArray.append(stories)
         }
         
-        //Then
-        XCTAssertGreaterThan(vm.topStories.count, 0)
-    }
-    
-    @MainActor func test_TopStoriesVM_rejectsTopStoryWithNoTitle() async {
-        
-        /*
-         create a fake story
-         then pass it to the function
-         function should not append the story to the array as it has no title
-         check the count of topStories to make sure it is still empty
-         */
-        
-        //Given
-        let service: APICaller = APICaller()
-        let category: ArticleCategory = .Arts
-        let nonEmptyMultimedia = Multimedia(url: "")
-        let vm = TopStoriesVM(service: service, selection: category)
-            let topStory = [
-            TopStory(title: "", abstract: "", url: "", byline: "", published_date: Date(), multimedia: [nonEmptyMultimedia])
-            ]
-        
-        //When
-        vm.filterAndPopulateArray(topStories: topStory)
-        
-        //Then
-        XCTAssertEqual(vm.topStories.count, 0)
-    }
-    
-    @MainActor func test_TopStoriesVM_rejectsTopStoryWithNoMultimedia() async {
-        
-        /*
-         create a fake story
-         then pass it to the function
-         function should not append the story to the array as it has no multimedia
-         check the count of topStories to make sure it is still empty
-         */
-        
-        //Given
-        let service: APICaller = APICaller()
-        let category: ArticleCategory = .Arts
-        let vm = TopStoriesVM(service: service, selection: category)
-            let topStory = [
-            TopStory(title: "not empty", abstract: "", url: "", byline: "", published_date: Date(), multimedia: [])
-            ]
-        
-        //When
-        vm.filterAndPopulateArray(topStories: topStory)
-        
-        //Then
-        XCTAssertEqual(vm.topStories.count, 0)
-    }
-    
-    @MainActor func test_TopStoriesVM_apiCallWithBadCategoryShouldFail() async {
-        
-        /*
-         Test for when the network request fails
-         I'm using the error alert as an indicator for whether or not the API call was a success
-         */
-        
-        //Given
-        let service: APICaller = APICaller()
-        let category: ArticleCategory = .Arts
-        let vm = TopStoriesVM(service: service, selection: category)
-        
-        //When
-        do {
-            try await vm.getTopStories(category: "Random")
-        } catch {
-            print(error)
-        }
-        
-        //Then
-        XCTAssertTrue(vm.showAlert == true)
+        vm.filterAndPopulateArray(topStories: storyArray)
+        XCTAssertEqual(vm.topStories.count, 1)
     }
 }
+
+
+// TO DO:
+/*
+ 
+ 1. Make sure the unit tests do not rely on an internet connection
+    - create and use mock responses
+ 2. Unit tests for when a network error occurs
+    - differentiate network error types
+ 3. Document all public and internal interfaces and make sure the style is consistent throughout
+    - code spacing
+ 4. Delete UI test boilerplate
+ 5. Delete unit test boilerplate
+ 6. Fix inconsistent vertical whitespace in UI
+ 7. The APICallerService protocol is never referenced. It should be used to inject the APICaller implementation which could then be mocked in the unit tests.
+ 8. Write more tests
+    - I had 6 (bad ones)
+ 
+ */

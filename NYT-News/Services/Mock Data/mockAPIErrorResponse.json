@@ -1,0 +1,38 @@
+"Saget, Bob"
+],
+"geo_facet": [],
+"multimedia": [
+{
+    "url": "https://static01.nyt.com/images/2022/02/11/science/11saget/11saget-superJumbo.jpg",
+    "format": "Super Jumbo",
+    "height": 1366,
+    "width": 2048,
+    "type": "image",
+    "subtype": "photo",
+    "caption": "Experts said that Bob Saget’s head was so badly injured, it was unlikely that he would have intentionally ignored it.",
+    "copyright": "Richard Shotwell/Invision, via Associated Press"
+},
+{
+    "url": "https://static01.nyt.com/images/2022/02/11/science/11saget/11saget-threeByTwoSmallAt2X.jpg",
+    "format": "threeByTwoSmallAt2X",
+    "height": 400,
+    "width": 600,
+    "type": "image",
+    "subtype": "photo",
+    "caption": "Experts said that Bob Saget’s head was so badly injured, it was unlikely that he would have intentionally ignored it.",
+    "copyright": "Richard Shotwell/Invision, via Associated Press"
+},
+{
+    "url": "https://static01.nyt.com/images/2022/02/11/science/11saget/11saget-thumbLarge.jpg",
+    "format": "Large Thumbnail",
+    "height": 150,
+    "width": 150,
+    "type": "image",
+    "subtype": "photo",
+    "caption": "Experts said that Bob Saget’s head was so badly injured, it was unlikely that he would have intentionally ignored it.",
+    "copyright": "Richard Shotwell/Invision, via Associated Press"
+}
+],
+"short_url": "https://nyti.ms/3GJqka3"
+}
+]
