@@ -65,7 +65,7 @@ final class TopStoriesVM: TopStoriesVMProtocol {
                 errorMessage = "Rate Limit Reached"
                 errorDescription = "You've reached the rate limit. Wait a few seconds and try again."
             case 1:
-                errorMessage = "There has been an error."
+                errorMessage = "There has been a network error."
                 errorDescription = "Please try again."
             default:
                 break

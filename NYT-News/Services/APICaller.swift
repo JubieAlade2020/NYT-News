@@ -46,8 +46,14 @@ final class APICaller {
         let jsonDecoder = JSONDecoder()
         jsonDecoder.dateDecodingStrategy = .iso8601
         guard let storyResponse = try? jsonDecoder.decode(TopStoriesResponse.self, from: data) else {
-            statusCode = APIError.rateLimitReached.errorCode
-            throw APIError.rateLimitReached
+            switch self.statusCode {
+            case APIError.noKeyProvided.errorCode:
+                throw APIError.noKeyProvided
+            case APIError.rateLimitReached.errorCode:
+                throw APIError.rateLimitReached
+            default:
+                throw APIError.defaultError
+            }
         }
         return storyResponse
     }
