@@ -42,7 +42,6 @@ class MockAPICaller_Tests: XCTestCase {
     /// Tests that the data is being decoded correctly.
     func test_MockAPICaller_decoderIsDecodingData() throws {
         let response = try mockAPI.fetchFakeStories()
-        
         XCTAssertTrue(response.results.isEmpty == false)
     }
 
@@ -57,7 +56,6 @@ class MockAPICaller_Tests: XCTestCase {
         }
         
         vm.filterAndPopulateArray(topStories: storyArray)
-
         XCTAssertEqual(vm.topStories.count, 1)
     }
     
@@ -66,25 +64,8 @@ class MockAPICaller_Tests: XCTestCase {
     /// Also tests that an alert is pushed regardless.
     @MainActor func test_MockAPICaller_resultsAreEmpty() throws {
         let vm = TopStoriesVM(service: api)
-        
         XCTAssertNoThrow(try mockAPI.fetchEmptyResults())
         vm.showingAlert = true
         XCTAssertEqual(vm.showingAlert, true)
     }
 }
-
-
-// TO DO:
-/*
-
- 1. Set up and tear down tests
-    - unit tests video
- 
- 2. Document all public and internal interfaces and make sure the style is consistent throughout
-    - code spacing
- 
- 3. More Tests
- 
- 4. Document tests too
- 
- */

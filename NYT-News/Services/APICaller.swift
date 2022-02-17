@@ -28,8 +28,16 @@ final class APICaller {
     /// - Returns: Returns the data in a form that's accessible to us.
     func getTopStories(category: String) async throws -> TopStoriesResponse {
         let urlSession = URLSession.shared
-        let url = URL(string: Constants.base+category+".json?api-key=52ZUl4wMOV7BwRGlWdFOJJWSQYq8zHW1") //<<<<<<<< key needed 🔐
-        let (data, response) = try await urlSession.data(from: url!)
+        
+        // key needed 🔐
+        guard let url = URL(string: Constants.base+category+".json?api-key=") else {
+            statusCode = APIError.defaultError.errorCode
+            throw APIError.defaultError
+        }
+        guard let (data, response) = try? await urlSession.data(from: url) else {
+            statusCode = APIError.defaultError.errorCode
+            throw APIError.defaultError
+        }
         
         if let httpResponse = response as? HTTPURLResponse {
             self.statusCode = httpResponse.statusCode

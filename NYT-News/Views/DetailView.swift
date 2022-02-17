@@ -36,7 +36,6 @@ struct DetailView: View {
                     shareButton
                 }
             })
-            
             .sheet(isPresented: $showingSheet) {
                 SafariWebView(url: detailVM.story.articleURL)
             }

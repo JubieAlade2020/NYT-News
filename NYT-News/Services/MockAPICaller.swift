@@ -29,7 +29,6 @@ final class MockAPICaller {
         return try jsonDecoder.decode(TopStoriesResponse.self, from: data!)
     }
     
-    
     /// Fetches three stories - one has no title, one has no multimedia, one is normal.
     ///
     /// This is used to simulate fetching an article from the API that is missing critical data. These articles should be disregarded and not displayed.
@@ -71,8 +70,11 @@ final class MockAPICaller {
     ///
     func fetchAPINoKey() async throws {
         let urlSession = URLSession.shared
-        let url = URL(string: Constants.base+"Arts.json?api-key=")
-        guard let (data, _) = try? await urlSession.data(from: url!) else {
+        guard let url = URL(string: Constants.noKey) else {
+            statusCode = APIError.defaultError.errorCode
+            throw APIError.defaultError
+        }
+        guard let (data, _) = try? await urlSession.data(from: url) else {
             statusCode = APIError.defaultError.errorCode
             throw APIError.defaultError
         }
