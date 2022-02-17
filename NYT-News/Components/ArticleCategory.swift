@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// The available New York Times categories. 
 enum ArticleCategory: String, CaseIterable {
     case Arts
     case Automobiles

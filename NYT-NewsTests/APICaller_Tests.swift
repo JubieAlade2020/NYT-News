@@ -8,48 +8,55 @@
 import XCTest
 @testable import NYT_News
 
+/// Tests the functionality of the API caller service.
 class APICaller_Tests: XCTestCase {
     
-    let api = MockAPICaller()
+    var api: APICaller!
     
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        api = APICaller()
     }
     
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        api = nil
     }
     
-    
-    func test_APIError() throws {
-        XCTAssertThrowsError(try api.fetchCorruptJson())
-    }
-    
-    // Tests a call that contains no key
-    @MainActor func test_APIError_ShouldBeErrorDueToNoKey() async throws {
-        var errorMessage = ""
+    /// Tests that the rate limit is reached when the API is called in rapid succession
+    ///
+    /// An internet connection is verified first. If there is no internet connection, the test is skipped.
+    ///
+    func test_APIError_rateLimitReached() async throws {
+        let group = DispatchGroup()
         
         do {
-            try await api.fetchAPINoKey()
+            _ = try await api.getTopStories(category: "Arts")
+            XCTAssertTrue(api.statusCode == 200)
+            // simulates trying to tap the refresh button 20 times
+            for _ in 0...20 {
+                do {
+                    group.enter()
+                    _ = try await api.getTopStories(category: "Arts")
+                    group.leave()
+                } catch {
+                    XCTAssertTrue(api.statusCode == 429)
+                }
+            }
         } catch {
-            errorMessage = "No API Key"
+            _ = XCTSkip("There was an issue fetching data from the api.")
         }
-        
-        XCTAssertTrue(errorMessage != "")
     }
     
+    /// Tests that an error is thrown when trying to get articles for a non-valid category
     func test_APIError_ShouldBeErrorDueToBadCategory() async throws {
         let category = ""
         var errorMessage = ""
-
-        let api = APICaller(category: ArticleCategory(rawValue: category) ?? .Arts)
-        
+                
         do {
-            let _ = try await api.getTopStories(category: category)
+            _ = try await api.getTopStories(category: category)
         } catch let theErrorMessage {
             errorMessage = theErrorMessage.localizedDescription
         }
-        
+
         XCTAssertTrue(errorMessage != "")
     }
 }

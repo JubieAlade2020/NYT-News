@@ -7,8 +7,9 @@
 
 import SwiftUI
 
+/// Root view of the app containing the list of articles.
 struct HomeView: View {
-    let service = APICaller(category: .Arts)
+    let service = APICaller()
         
     var body: some View {
         NavigationView {

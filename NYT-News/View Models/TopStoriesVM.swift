@@ -18,13 +18,14 @@ protocol TopStoriesVMProtocol: ObservableObject {
 
 /// This view model serves as the mediary between the API caller and  views displaying the API results.
 ///
-/// The view model gets data from the API. It then processes the data so that it can be used in the views.
+/// The view model processes the data so that it can be used in the views.
 ///
 @MainActor
 final class TopStoriesVM: TopStoriesVMProtocol {
     
     // MARK: PROPERTIES
     
+    @Published var showingAlert: Bool = false
     @Published var topStories: [TopStory] = []
     @Published var isLoading: Bool = true
     @Published var showAlert: Bool = false
@@ -49,6 +50,10 @@ final class TopStoriesVM: TopStoriesVMProtocol {
         do {
             emptyArrays()
             let response = try await service.getTopStories(category: category)
+            if response.results.isEmpty {
+                showAlert.toggle()
+                showingAlert = true 
+            }
             self.storyArray = response.results
             filterAndPopulateArray(topStories: self.storyArray)
         } catch {
@@ -59,8 +64,11 @@ final class TopStoriesVM: TopStoriesVMProtocol {
             case 429:
                 errorMessage = "Rate Limit Reached"
                 errorDescription = "You've reached the rate limit. Wait a few seconds and try again."
+            case 1:
+                errorMessage = "There has been an error."
+                errorDescription = "Please try again."
             default:
-                errorMessage = "Problem Fetching Data"
+                break
             }
             showAlert.toggle()
         }

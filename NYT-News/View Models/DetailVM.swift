@@ -16,6 +16,7 @@ protocol DetailViewModelProtocol: ObservableObject {
 
 // MARK: VIEW MODEL
 
+/// This is the view model used by the detail view. It handles the toggling of the Safari screen. 
 final class DetailVM: DetailViewModelProtocol {
     
     // MARK: PROPERTIES

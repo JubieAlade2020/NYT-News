@@ -9,6 +9,7 @@ import Foundation
 
 fileprivate let relativeDateFormatter = RelativeDateTimeFormatter()
 
+/// Used to decode data from API calls. 
 public struct TopStoriesResponse: Codable {
     let results: [TopStory]
 }

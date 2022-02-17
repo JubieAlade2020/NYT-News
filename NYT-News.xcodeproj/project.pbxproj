@@ -9,11 +9,13 @@
 /* Begin PBXBuildFile section */
 		8A33F58127BC6AA4006A65CB /* MockAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A33F57D27BC6AA4006A65CB /* MockAPICaller.swift */; };
 		8A33F58227BC6AA4006A65CB /* emptyTitle-emptyMulti.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A33F57E27BC6AA4006A65CB /* emptyTitle-emptyMulti.json */; };
-		8A33F58327BC6AA4006A65CB /* mockAPIResponse-fetchArticles.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A33F57F27BC6AA4006A65CB /* mockAPIResponse-fetchArticles.json */; };
-		8A33F58427BC6AA4006A65CB /* mockAPIErrorResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A33F58027BC6AA4006A65CB /* mockAPIErrorResponse.json */; };
+		8A33F58327BC6AA4006A65CB /* fetchArtArticles.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A33F57F27BC6AA4006A65CB /* fetchArtArticles.json */; };
+		8A33F58427BC6AA4006A65CB /* incompleteJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A33F58027BC6AA4006A65CB /* incompleteJson.json */; };
 		8A33F58627BC6B28006A65CB /* APICaller_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A33F58527BC6B28006A65CB /* APICaller_Tests.swift */; };
+		8A65B02127BD1DB300C27588 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65B02027BD1DB300C27588 /* APIError.swift */; };
+		8A65B02327BD241000C27588 /* MockAPICaller_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65B02227BD241000C27588 /* MockAPICaller_Tests.swift */; };
+		8A65B02527BD248A00C27588 /* resultsAreEmpty.json in Resources */ = {isa = PBXBuildFile; fileRef = 8A65B02427BD248A00C27588 /* resultsAreEmpty.json */; };
 		8A8F443A27AC0AFC00C0C9F6 /* NYT_NewsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F443927AC0AFC00C0C9F6 /* NYT_NewsApp.swift */; };
-		8A8F443C27AC0AFC00C0C9F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F443B27AC0AFC00C0C9F6 /* ContentView.swift */; };
 		8A8F443E27AC0AFD00C0C9F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F443D27AC0AFD00C0C9F6 /* Assets.xcassets */; };
 		8A8F444127AC0AFD00C0C9F6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F444027AC0AFD00C0C9F6 /* Preview Assets.xcassets */; };
 		8A8F446927AC0B2E00C0C9F6 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F446827AC0B2E00C0C9F6 /* APICaller.swift */; };
@@ -27,7 +29,6 @@
 		8A8F447927AC0B7800C0C9F6 /* TopStoryRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F447827AC0B7800C0C9F6 /* TopStoryRowView.swift */; };
 		8A8F447B27AC0B8200C0C9F6 /* ArticleCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F447A27AC0B8200C0C9F6 /* ArticleCategory.swift */; };
 		8A8F447E27AC0BE700C0C9F6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 8A8F447D27AC0BE700C0C9F6 /* Kingfisher */; };
-		8A8F448027AC0C0000C0C9F6 /* TopStoriesVM_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F447F27AC0C0000C0C9F6 /* TopStoriesVM_Tests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,12 +44,14 @@
 /* Begin PBXFileReference section */
 		8A33F57D27BC6AA4006A65CB /* MockAPICaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockAPICaller.swift; sourceTree = "<group>"; };
 		8A33F57E27BC6AA4006A65CB /* emptyTitle-emptyMulti.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "emptyTitle-emptyMulti.json"; sourceTree = "<group>"; };
-		8A33F57F27BC6AA4006A65CB /* mockAPIResponse-fetchArticles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "mockAPIResponse-fetchArticles.json"; sourceTree = "<group>"; };
-		8A33F58027BC6AA4006A65CB /* mockAPIErrorResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mockAPIErrorResponse.json; sourceTree = "<group>"; };
+		8A33F57F27BC6AA4006A65CB /* fetchArtArticles.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = fetchArtArticles.json; sourceTree = "<group>"; };
+		8A33F58027BC6AA4006A65CB /* incompleteJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = incompleteJson.json; sourceTree = "<group>"; };
 		8A33F58527BC6B28006A65CB /* APICaller_Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APICaller_Tests.swift; sourceTree = "<group>"; };
+		8A65B02027BD1DB300C27588 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		8A65B02227BD241000C27588 /* MockAPICaller_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPICaller_Tests.swift; sourceTree = "<group>"; };
+		8A65B02427BD248A00C27588 /* resultsAreEmpty.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = resultsAreEmpty.json; sourceTree = "<group>"; };
 		8A8F443627AC0AFC00C0C9F6 /* NYT-News.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NYT-News.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A8F443927AC0AFC00C0C9F6 /* NYT_NewsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYT_NewsApp.swift; sourceTree = "<group>"; };
-		8A8F443B27AC0AFC00C0C9F6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8A8F443D27AC0AFD00C0C9F6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A8F444027AC0AFD00C0C9F6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8A8F444627AC0AFE00C0C9F6 /* NYT-NewsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NYT-NewsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,7 +65,6 @@
 		8A8F447627AC0B6D00C0C9F6 /* SafariWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebView.swift; sourceTree = "<group>"; };
 		8A8F447827AC0B7800C0C9F6 /* TopStoryRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoryRowView.swift; sourceTree = "<group>"; };
 		8A8F447A27AC0B8200C0C9F6 /* ArticleCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleCategory.swift; sourceTree = "<group>"; };
-		8A8F447F27AC0C0000C0C9F6 /* TopStoriesVM_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoriesVM_Tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,10 +89,10 @@
 		8A33F57C27BC6AA4006A65CB /* Mock Data */ = {
 			isa = PBXGroup;
 			children = (
-				8A33F57D27BC6AA4006A65CB /* MockAPICaller.swift */,
 				8A33F57E27BC6AA4006A65CB /* emptyTitle-emptyMulti.json */,
-				8A33F57F27BC6AA4006A65CB /* mockAPIResponse-fetchArticles.json */,
-				8A33F58027BC6AA4006A65CB /* mockAPIErrorResponse.json */,
+				8A33F57F27BC6AA4006A65CB /* fetchArtArticles.json */,
+				8A33F58027BC6AA4006A65CB /* incompleteJson.json */,
+				8A65B02427BD248A00C27588 /* resultsAreEmpty.json */,
 			);
 			path = "Mock Data";
 			sourceTree = "<group>";
@@ -122,7 +124,6 @@
 				8A8F446427AC0B1300C0C9F6 /* Views */,
 				8A8F446327AC0B0A00C0C9F6 /* Components */,
 				8A8F443927AC0AFC00C0C9F6 /* NYT_NewsApp.swift */,
-				8A8F443B27AC0AFC00C0C9F6 /* ContentView.swift */,
 				8A8F443D27AC0AFD00C0C9F6 /* Assets.xcassets */,
 				8A8F443F27AC0AFD00C0C9F6 /* Preview Content */,
 			);
@@ -141,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				8A33F58527BC6B28006A65CB /* APICaller_Tests.swift */,
-				8A8F447F27AC0C0000C0C9F6 /* TopStoriesVM_Tests.swift */,
+				8A65B02227BD241000C27588 /* MockAPICaller_Tests.swift */,
 			);
 			path = "NYT-NewsTests";
 			sourceTree = "<group>";
@@ -188,6 +189,8 @@
 			children = (
 				8A33F57C27BC6AA4006A65CB /* Mock Data */,
 				8A8F446827AC0B2E00C0C9F6 /* APICaller.swift */,
+				8A33F57D27BC6AA4006A65CB /* MockAPICaller.swift */,
+				8A65B02027BD1DB300C27588 /* APIError.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -281,9 +284,10 @@
 			files = (
 				8A8F444127AC0AFD00C0C9F6 /* Preview Assets.xcassets in Resources */,
 				8A8F443E27AC0AFD00C0C9F6 /* Assets.xcassets in Resources */,
-				8A33F58427BC6AA4006A65CB /* mockAPIErrorResponse.json in Resources */,
+				8A33F58427BC6AA4006A65CB /* incompleteJson.json in Resources */,
 				8A33F58227BC6AA4006A65CB /* emptyTitle-emptyMulti.json in Resources */,
-				8A33F58327BC6AA4006A65CB /* mockAPIResponse-fetchArticles.json in Resources */,
+				8A33F58327BC6AA4006A65CB /* fetchArtArticles.json in Resources */,
+				8A65B02527BD248A00C27588 /* resultsAreEmpty.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,7 +310,6 @@
 				8A8F447527AC0B6400C0C9F6 /* DetailView.swift in Sources */,
 				8A8F447927AC0B7800C0C9F6 /* TopStoryRowView.swift in Sources */,
 				8A8F447127AC0B5100C0C9F6 /* HomeView.swift in Sources */,
-				8A8F443C27AC0AFC00C0C9F6 /* ContentView.swift in Sources */,
 				8A8F447B27AC0B8200C0C9F6 /* ArticleCategory.swift in Sources */,
 				8A8F446927AC0B2E00C0C9F6 /* APICaller.swift in Sources */,
 				8A33F58127BC6AA4006A65CB /* MockAPICaller.swift in Sources */,
@@ -314,6 +317,7 @@
 				8A8F446B27AC0B3800C0C9F6 /* TopStoriesResponse.swift in Sources */,
 				8A8F443A27AC0AFC00C0C9F6 /* NYT_NewsApp.swift in Sources */,
 				8A8F446D27AC0B4000C0C9F6 /* DetailVM.swift in Sources */,
+				8A65B02127BD1DB300C27588 /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,7 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A33F58627BC6B28006A65CB /* APICaller_Tests.swift in Sources */,
-				8A8F448027AC0C0000C0C9F6 /* TopStoriesVM_Tests.swift in Sources */,
+				8A65B02327BD241000C27588 /* MockAPICaller_Tests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
